@@ -1,0 +1,25 @@
+.add{
+    color: RED;
+    font-size: 40px;
+    font-weight: bolder;
+}
+.add-icon{
+    font-size: ;
+}
+.row{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+#col1{
+    padding-top: 50px;
+    width: 500px;
+    align-items: center;
+}
+
+#col2{
+    margin-top: 100px;
+    padding-left: 100px;
+}
+

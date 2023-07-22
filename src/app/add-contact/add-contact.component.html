@@ -1,0 +1,114 @@
+<div class="container-fluid">
+  <div>
+    <a
+      ><span class="add">ADD</span> <b>New Contact Here</b> &nbsp;
+      <i class="fa-solid fa-user-plus fa-shake fa-xl"></i
+    ></a>
+  </div>
+  
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda corrupti
+    inventore adipisci quisquam ipsum vel eveniet odit aspernatur
+    exercitationem, ipsa modi blanditiis mollitia magnam vitae ea provident
+    velit hic unde. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    Corporis veritatis nemo totam odit, optio tenetur assumenda suscipit illum
+    dolores sit animi et at non rerum autem impedit cupiditate! Culpa, quo.
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum non beatae,
+    itaque, eos a minus voluptatibus debitis reprehenderit voluptate vero illum
+    facere eius tempore recusandae, accusamus quae possimus amet praesentium. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem numquam, facilis minima, quod saepe animi dignissimos aspernatur repudiandae culpa vel veniam velit, ducimus deleniti aliquid temporibus itaque quidem cum maxime?
+  </p>
+  <div class="row">
+  <div id="col1" class="col-md-12 ms-3">
+        <form class="form-control mb-4 mt-4" >
+      <div class="mb-3">
+        <input name="id" #id="ngModel" [(ngModel)]="contact.id" type="text" class="form-control"   placeholder="Contact ID" required>
+      </div>
+      <!-- validation -->
+      <div *ngIf="id.invalid && id.touched" class="mb-1 text-danger">
+        Please enter a valid ID 
+      </div>
+
+      <div class="mb-3">
+        <input name="name" #name="ngModel" [(ngModel)]="contact.name" type="text" class="form-control"  placeholder="Enter Your Name" required pattern="[a-zA-Z]*">
+      </div>
+      <!-- validation -->
+
+      <div *ngIf="name.invalid && name.touched" class="mb-1 text-danger">
+        Please enter a valid name 
+      </div>
+      <div class="mb-3">
+        <input name="photo" #photo="ngModel"  [(ngModel)]="contact.photo" type="text" class="form-control" id="exampleInputEmail1"  placeholder="Contact Image URL"  required>
+      </div>
+       <!-- validation -->
+      
+       <div *ngIf="photo.invalid && photo.touched" class="mb-1 text-danger">
+        Please enter a valid URL 
+      </div>
+
+      <div class="mb-3">
+        <input name="mobile" #mobile="ngModel" [(ngModel)]="contact.mobile" type="text" class="form-control"   placeholder="Contact Number" minlength="10" maxlength="10"   required>
+      </div>
+       <!-- validation -->
+       <div *ngIf="mobile.invalid && mobile.touched" class="mb-1 text-danger">
+        Please enter a valid Mobile number 
+      </div>
+      
+      <div class="mb-3">
+        <input name="email"#email="ngModel" [(ngModel)]="contact.email" type="email" class="form-control"  placeholder="Contact E-mail"  required>
+      </div>
+      <!-- validation -->
+      <div *ngIf="email.invalid && email.touched" class="mb-1 text-danger">
+        Please enter a valid Email Id 
+      </div>
+    
+      <div class="mb-3">
+        <input name="company" #company="ngModel" [(ngModel)]="contact.company" type="text" class="form-control"  placeholder="Contact Company Name" required>
+      </div>
+       <!-- validation -->
+       <div *ngIf="company.invalid && company.touched" class="mb-1 text-danger">
+        Please enter a valid Comapny Nmae 
+      </div>
+     
+      <div class="mb-3">
+        <input name="title" #title="ngModel" [(ngModel)]="contact.title" type="text" class="form-control"  placeholder="Enter Title" required>
+      </div>
+      <!-- validation -->
+      <div *ngIf="title.invalid && title.touched" class="mb-1 text-danger">
+        Please enter a valid Title 
+      </div>
+
+      <!-- drop-down -->
+      <div class="mb-3 mt-3">
+      <select name="groupId"[(ngModel)]="contact.groupId" class="form-contol" >
+            <option disabled selected hidden  value="">Select a Group</option>
+              <option [value]="group.id" class="dropdown-item" *ngFor="let group of groups">{{group.name}}</option>
+      </select>
+        </div>
+
+      <!-- buttons -->
+     
+      <div class="add-button">
+        
+          <a (click)="addContact(contact)" type="submit" class="btn btn-primary ">Create</a> 
+          <a routerLink="" type="submit" class="btn btn-danger ms-2">Close</a>
+      </div>
+      
+    
+    </form>
+    </div>
+    <div id="col2" class="col-md-6 ">
+        <img  width="150px" [src]="contact.photo" alt="Contact Image">
+        <div class="card-body"><h5 class="card-title mt-2 mb-2">CONTACT DETAILS</h5>
+       <div >
+            <p>ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{contact.id}}</p>
+            <p>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{contact.name}} </p>
+            <P>Mobile:&nbsp;&nbsp;&nbsp;&nbsp;{{contact.mobile}}  </P>
+            <P>E-mail: &nbsp;&nbsp;&nbsp;&nbsp;{{contact.email}}</P>
+            <P>Comapny:{{contact.company}} </P>
+            <P>Title: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{contact.title}}</P>
+            <P>Group:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{contact.groupId}} </P>
+            </div>
+       </div>
+    </div>
+  </div>
+</div>

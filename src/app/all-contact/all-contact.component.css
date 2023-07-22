@@ -1,0 +1,30 @@
+#search{
+    align-items: center;
+    text-align: center;
+    padding-left: 20px;
+}
+input{
+    box-shadow: green,gray;
+    border-radius: 5px;
+}
+button{
+    width: 80px;
+    
+
+}
+#title{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif ;
+}
+p{
+    font-size: 15px;
+    font-family: sans-serif;
+}
+#butt{
+  text-align: center;
+  align-items: center;
+    
+    
+    
+}

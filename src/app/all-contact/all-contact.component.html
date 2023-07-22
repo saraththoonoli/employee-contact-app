@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  
+  <div>
+    <a><span id="title"><span style="color: red;font-size: 35px;">Employe</span> Contact Details</span></a>
+    
+<br>
+    <button routerLink="add-contact/:id" class="btn btn-dark">
+      Add &nbsp; <i class="fa-solid fa-person fa-beat"></i>
+    </button> 
+  </div>
+  <br>
+
+  <div class="details">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum eveniet
+      soluta possimus, ut, eius eligendi accusamus unde dolorem perferendis
+      ipsum reprehenderit vel, eos quam maiores perspiciatis laboriosam incidunt
+      quas repudiandae. Lorem ipsum, dolor sit amet consectetur adipisicing
+      elit. Quam, amet? Omnis, cupiditate odit distinctio quam, perspiciatis vel
+      reprehenderit in sint voluptatibus temporibus explicabo a! Voluptatem
+      aspernatur sunt delectus dolor cumque. <span>    <p class="mt-1">{{todayDate | date : 'medium' | uppercase}}</p>
+      </span>
+    </p>
+    <div style="text-align: center; align-items: center; " class="col-lg-6 mt-3 mb-3">
+      <input style="width: 300px;text-align: center; border-radius: 5px; background-color: rgb(248, 240, 229);" [(ngModel)]="searchKey" type="text" placeholder="Search Contact!!!" class="form-control me-auto">
+    </div>
+  </div>
+  <!-- loading spinner -->
+  <div *ngIf="isloading && allContacts.length==0" class="text-center mt-4 md-3">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+  <!-- no contact match -->
+  <div style="text-align: center;" *ngIf="(allContacts | search:searchKey:'name').length==0 && !isloading">
+    <h3 style="text-align: center;margin-top: 20px;"><b>No contact Found</b></h3>
+    <img width="200px" src="https://cdn.dribbble.com/users/1860339/screenshots/6076039/lupa.gif" alt="">
+
+  </div>
+  <!-- error msg -->
+  <div *ngIf="errorMsg" class="alert alert-danger" role="alert">
+    {{errorMsg}}
+  </div>
+
+  <div class="container mt-5">
+    <!-- card -->
+    <div class="row" *ngIf="!isloading && allContacts.length>0" >
+      <div class="col-lg-6 mb-3" *ngFor="let contact of allContacts | search :searchKey :'name'" >
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img style="width: 150px;height: 175px;" class="img" [src]="contact.photo" alt="">
+              </div>
+              <div class="col-md-7">
+                <ul class="list-group">
+                    <li class="list-group-item">Name:<span class="fw-bold ">{{contact.name}}
+                    </span></li>
+                    <li class="list-group-item">Mobile:<span class="fw-bold ">{{contact.mobile}}
+                    </span></li>
+                    <li class="list-group-item">E-mail:<span class="fw-bold ">{{contact.email}}
+                    </span></li>
+                </ul>
+              </div>
+              <div class="col-md-1 d-flex flex-column">
+               <ul id="butt"  class="list-group">
+                <a class="btn btn-warning text-dark mb-2" routerLink="view-contact/{{contact.id}}"> <i id="icon"  class="fa-solid fa-eye fa-beat"></i></a>
+                <a class="btn btn-success text-dark mb-2" routerLink="edit-contact/{{contact.id}}"> <i id="icon"  class="fa-solid fa-file-pen fa-fade"></i></a>
+                <a (click)="deletecontact(contact.id)" class="btn btn-danger text-dark"> <i id="icon"  class="fa-solid fa-trash fa-bounce"></i></a>
+               </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

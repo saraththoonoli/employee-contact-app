@@ -1,0 +1,15 @@
+.page{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.but{
+    align-items: center;
+    text-align: center;
+    padding-bottom: 20px;
+    
+}
+h1{
+    color: red;
+    font-size: 50px;
+}
